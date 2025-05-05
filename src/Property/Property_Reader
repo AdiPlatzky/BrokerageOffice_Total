@@ -1,0 +1,20 @@
+public class DemoData {
+    public static void main(String[] args) {
+        // דירה רגילה
+        Coordinate c1 = new Coordinate("Herzl", 10);
+        PropertyComponent simple = new SimpleProperty("P1", c1, Status.FOR_SALE, 750000, 80);
+
+        // דירה מחולקת לשתי דירות קטנות
+        Coordinate c2 = new Coordinate("Ben Gurion", 20);
+        CompositeProperty composite = new CompositeProperty("P2", c2, Status.FOR_SALE);
+        composite.add(new SimpleProperty("P2-1", c2, Status.FOR_SALE, 400000, 40));
+        composite.add(new SimpleProperty("P2-2", c2, Status.FOR_SALE, 420000, 45));
+
+        // הוספה למסד הנתונים
+        PropertyDatabase.addProperty(simple);
+        PropertyDatabase.addProperty(composite);
+
+        // הדפסה של כל הדירות הקיימות
+        PropertyDatabase.printAllProperties();
+    }
+}
